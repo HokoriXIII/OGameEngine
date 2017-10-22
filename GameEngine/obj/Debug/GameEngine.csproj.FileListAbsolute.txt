@@ -1,0 +1,13 @@
+C:\Users\Человек\source\repos\GameEngine\GameEngine\bin\Debug\GameEngine.exe.config
+C:\Users\Человек\source\repos\GameEngine\GameEngine\bin\Debug\GameEngine.exe
+C:\Users\Человек\source\repos\GameEngine\GameEngine\bin\Debug\GameEngine.pdb
+C:\Users\Человек\source\repos\GameEngine\GameEngine\bin\Debug\OpenTK.dll
+C:\Users\Человек\source\repos\GameEngine\GameEngine\bin\Debug\OpenTK.GLControl.dll
+C:\Users\Человек\source\repos\GameEngine\GameEngine\bin\Debug\OpenTK.xml
+C:\Users\Человек\source\repos\GameEngine\GameEngine\bin\Debug\OpenTK.GLControl.xml
+C:\Users\Человек\source\repos\GameEngine\GameEngine\obj\Debug\GameEngine.csprojResolveAssemblyReference.cache
+C:\Users\Человек\source\repos\GameEngine\GameEngine\obj\Debug\GameEngine.Properties.Resources.resources
+C:\Users\Человек\source\repos\GameEngine\GameEngine\obj\Debug\GameEngine.csproj.GenerateResource.Cache
+C:\Users\Человек\source\repos\GameEngine\GameEngine\obj\Debug\GameEngine.csproj.CoreCompileInputs.cache
+C:\Users\Человек\source\repos\GameEngine\GameEngine\obj\Debug\GameEngine.exe
+C:\Users\Человек\source\repos\GameEngine\GameEngine\obj\Debug\GameEngine.pdb
