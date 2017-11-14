@@ -17,6 +17,7 @@ namespace OGameEngine
         public virtual int ColorDataCount { get; set; }
         public virtual int NormalCount { get { return Normals.Length; } }
         public virtual int TextureCoordsCount { get; set; }
+        public virtual String Name { get; set; }
 
         public Matrix4 ModelMatrix = Matrix4.Identity;
         public Matrix4 ViewProjectionMatrix = Matrix4.Identity;

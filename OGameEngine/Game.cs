@@ -39,6 +39,8 @@ namespace OGameEngine
         Dictionary<String, Material> materials = new Dictionary<string, Material>();
 
         float time = 0.0f;
+        int FramebufferName;
+        int depthTexture;
 
         void initProgram()
         {
@@ -46,15 +48,19 @@ namespace OGameEngine
 
             GL.GenBuffers(1, out ibo_elements);
 
+            
+
             // Load shaders from file
             shaders.Add("default", new ShaderProgram("vs.glsl", "fs.glsl", true));
             shaders.Add("textured", new ShaderProgram("vs_tex.glsl", "fs_tex.glsl", true));
             shaders.Add("normal", new ShaderProgram("vs_norm.glsl", "fs_norm.glsl", true));
             shaders.Add("lit", new ShaderProgram("vs_lit.glsl", "fs_lit.glsl", true));
 
+
             activeShader = "lit";
 
             loadMaterials("opentk.mtl");
+            loadMaterials("police.mtl");
 
             // Create our objects
             TexturedCube tc = new TexturedCube();
@@ -79,6 +85,22 @@ namespace OGameEngine
             earth.Position += new Vector3(1f, 1f, -2f);
             earth.Material = new Material(new Vector3(0.15f), new Vector3(1), new Vector3(0.2f), 5);
             objects.Add(earth);
+
+            textures.Add("police.jpg", loadImage("police.jpg"));
+            ObjVolume car = ObjVolume.LoadFromFile("police.obj");
+            car.TextureID = textures["police.jpg"];
+            car.Position += new Vector3(1f, 1f, -4f);
+            car.Material = materials["opentk1"];
+            car.Name = "Police";
+            objects.Add(car);
+
+            textures.Add("tank.png", loadImage("tank.png"));
+            ObjVolume tank = ObjVolume.LoadFromFile("tank.obj");
+            tank.TextureID = textures["tank.png"];
+            tank.Position += new Vector3(1f, 1f, -5f);
+            tank.Material = materials["opentk1"];
+            tank.Name = "Tank";
+            objects.Add(tank);
         }
 
         /// <summary>
@@ -140,12 +162,18 @@ namespace OGameEngine
         protected override void OnRenderFrame(FrameEventArgs e)
         {
             base.OnRenderFrame(e);
-            GL.Viewport(0, 0, Width, Height);
+
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+
+            GL.Viewport(0, 0, Width, Height);
+            
             GL.Enable(EnableCap.DepthTest);
+
+
 
             GL.UseProgram(shaders[activeShader].ProgramID);
             shaders[activeShader].EnableVertexAttribArrays();
+
 
             int indiceat = 0;
 
@@ -217,6 +245,9 @@ namespace OGameEngine
 
             shaders[activeShader].DisableVertexAttribArrays();
 
+            
+
+
             GL.Flush();
             SwapBuffers();
         }
@@ -226,6 +257,9 @@ namespace OGameEngine
             base.OnUpdateFrame(e);
 
             cam.Update(e);
+
+
+            
 
             List<Vector3> verts = new List<Vector3>();
             List<int> inds = new List<int>();
@@ -290,6 +324,10 @@ namespace OGameEngine
             objects[1].Position = new Vector3(-1f, 0.5f + (float)Math.Cos(time), -2.0f);
             objects[1].Rotation = new Vector3(-0.25f * time, -0.35f * time, 0);
             objects[1].Scale = new Vector3(0.7f, 0.7f, 0.7f);
+
+            var Car = objects.Find(x => x.Name == "Police");
+
+            Car.Position.Z += 0.005f;
 
             // Update model view matrices
             foreach (Volume v in objects)

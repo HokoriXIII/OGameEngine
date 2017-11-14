@@ -33,6 +33,7 @@ namespace OGameEngine
 
         public override int TextureCoordsCount { get { return faces.Count * 3; } }
 
+        public override String Name { get; set; }
 
         public override Vector3[] GetNormals()
         {
